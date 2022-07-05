@@ -41,3 +41,7 @@ if (!class_exists('Class_Backend_Woo_RN')) {
 	require_once WC_RN_BASE_PATH . '/class/class-backend-woo-rn.php';
 	add_action( 'plugins_loaded', [ 'Class_Backend_Woo_RN', 'init' ]);
 }
+if (!class_exists('Class_Frontend_Woo_RN')) {
+	require_once WC_RN_BASE_PATH . '/class/class-frontend-woo-rn.php';
+	add_action( 'plugins_loaded', [ 'Class_Frontend_Woo_RN', 'init' ]);
+}
