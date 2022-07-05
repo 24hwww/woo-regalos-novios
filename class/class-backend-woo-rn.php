@@ -15,6 +15,7 @@ class Class_Backend_Woo_RN{
 		$this->id_menu = 'regalos-novios';
     register_activation_hook( __FILE__, function(){
       add_role( 'novios', 'Novios', get_role( 'customer' )->capabilities );
+      flush_rewrite_rules();
     });
   }
 
@@ -33,7 +34,7 @@ class Class_Backend_Woo_RN{
                     'singular_name' => __( 'Regalos', '' ),
                 ),
                 'public'      => true,
-                'has_archive' => true,
+                'has_archive' => 'regalos',
                 'menu_icon'   => 'dashicons-buddicons-tracking',
                 'rewrite'     => array( 'slug' => 'regalo' ),
             )
