@@ -27,7 +27,7 @@ class Class_Backend_Woo_RN{
   }
 
   public function agregar_cpt_regalos_func(){
-        register_post_type('regalos',
+      register_post_type('regalos',
             array(
                 'labels'      => array(
                     'name'          => __( 'Regalos', '' ),
@@ -37,9 +37,15 @@ class Class_Backend_Woo_RN{
                 'has_archive' => 'regalos',
                 'menu_icon'   => 'dashicons-buddicons-tracking',
                 'rewrite'     => array( 'slug' => 'regalo' ),
+                // 'supports' => array('author')
             )
         );
-
+      register_taxonomy( 'productos_regalos', 'regalos', array(
+          'label'        => __( 'Productos', 'textdomain' ),
+          'rewrite'      => array( 'slug' => 'producto' ),
+          'show_admin_column' => true,
+          'hierarchical' => true,
+      ));
   }
 
 }
