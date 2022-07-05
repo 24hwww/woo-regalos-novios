@@ -13,10 +13,32 @@ class Class_Backend_Woo_RN{
 	}
   public function __construct() {
 		$this->id_menu = 'regalos-novios';
+    register_activation_hook( __FILE__, function(){
+      add_role( 'novios', 'Novios', get_role( 'customer' )->capabilities );
+    });
   }
 
   public static function init() {
     $instance = self::instance();
+
+    add_action( 'init', [$instance,'agregar_cpt_regalos_func']);
+
+  }
+
+  public function agregar_cpt_regalos_func(){
+        register_post_type('regalos',
+            array(
+                'labels'      => array(
+                    'name'          => __( 'Regalos', '' ),
+                    'singular_name' => __( 'Regalos', '' ),
+                ),
+                'public'      => true,
+                'has_archive' => true,
+                'menu_icon'   => 'dashicons-buddicons-tracking',
+                'rewrite'     => array( 'slug' => 'regalo' ),
+            )
+        );
+
   }
 
 }
